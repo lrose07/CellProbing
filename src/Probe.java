@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 class Probe {
 
     private int[] values = new int[100];
-    final int MAX_TRY = 50;
+    private final int MAX_TRY = 50;
     private int totalWinsAlg = 0;
     private int totalWinsRand = 0;
 
@@ -15,14 +15,14 @@ class Probe {
         for (int i = 0; i < 100000; i++) {
             shuffleArray(values);
             runGameByAlgorithm();
-            runGameByRandomSelection();
+            //runGameByRandomSelection();
         }
         long end = System.nanoTime();
         long totalTime = (end - start) / 1000000;
 
-        System.out.println("Total wins by algorithm: " + totalWinsAlg);
-        System.out.println("Total wins by random selection: " + totalWinsRand);
-        System.out.println("Total time: " + totalTime + " milliseconds");
+        System.out.println(ANSI_PURPLE + "Total wins by algorithm: " + ANSI_RESET + totalWinsAlg);
+        System.out.println(ANSI_GREEN + "Total wins by random selection: " + ANSI_RESET + totalWinsRand);
+        System.out.println(ANSI_RED + "Total time: " + ANSI_RESET + totalTime + " milliseconds");
 
     }
 
@@ -96,13 +96,8 @@ class Probe {
         }
     }
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_PURPLE = "\u001B[35m";
 }
